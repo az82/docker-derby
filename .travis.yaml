@@ -1,0 +1,8 @@
+language: bash
+services: docker
+
+script:
+    - docker build -t az82/docker-derby .
+    - docker run -d -p 1527:1527 -v $(pwd)/dbs:/dbs  az82/docker-derby
+    - nc -z localhost 1527
+    - docker kill $(docker ps | grep -F az82/docker-derby | cut -d' ' -f1)
