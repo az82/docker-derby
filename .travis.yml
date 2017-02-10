@@ -2,12 +2,12 @@ language: bash
 services: docker
 
 script:
-    - docker build -t $DOCKER_REPO:$COMMIT .
-    - docker run -d -p 1527:1527 -v $(pwd)/dbs:/dbs $DOCKER_REPO:$COMMIT
+    - docker build -t $DOCKER_REPO:$TRAVIS_COMMIT .
+    - docker run -d -p 1527:1527 -v $(pwd)/dbs:/dbs $DOCKER_REPO:$TRAVIS_COMMIT
     - nc -z localhost 1527
     - docker kill $(docker ps | grep -F az82/docker-derby | cut -d' ' -f1)
 
 after_success:
     - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
-    - docker tag $DOCKER_REPO:$COMMIT $DOCKER_REPO:$([[ "$TRAVIS_BRANCH" == "master" ]] && echo "latest" || echo $TRAVIS_BRANCH)
+    - docker tag $DOCKER_REPO:$TRAVIS_COMMIT $DOCKER_REPO:$([[ "$TRAVIS_BRANCH" == "master" ]] && echo "latest" || echo $TRAVIS_BRANCH)
     - docker push $DOCKER_REPO
