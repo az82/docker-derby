@@ -4,8 +4,11 @@ services: docker
 script:
     - docker build -t $DOCKER_REPO:$TRAVIS_COMMIT .
     - docker run -d -p 1527:1527 -v $(pwd)/dbs:/dbs $DOCKER_REPO:$TRAVIS_COMMIT
+    - export CONTAINER_ID=$(docker ps | grep -F az82/docker-derby | cut -d' ' -f1)
+    - sleep 3
+    - docker logs $CONTAINER_ID | grep -F "started and ready"
     - nc -z localhost 1527
-    - docker kill $(docker ps | grep -F az82/docker-derby | cut -d' ' -f1)
+    - docker kill $CONTAINER_ID
 
 after_success:
     - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
