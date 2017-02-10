@@ -5,7 +5,7 @@ script:
     - docker build -t $DOCKER_REPO:$TRAVIS_COMMIT .
     - export CONTAINER_ID=$(docker run -d -p 1527:1527 -v $(pwd)/dbs:/dbs $DOCKER_REPO:$TRAVIS_COMMIT)
     - while docker inspect --format "{{json .State.Health }}" $CONTAINER_ID | grep -F starting; do sleep 5; done
-    - docker inspect --format "{{json .State.Health }}" | grep -F healthy $CONTAINER_ID
+    - docker inspect --format "{{json .State.Health }}" $CONTAINER_ID | grep -F healthy 
     - docker logs $CONTAINER_ID | grep -F "started and ready"
     - nc -z localhost 1527
     - docker kill $CONTAINER_ID
