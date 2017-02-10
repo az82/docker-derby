@@ -1,9 +1,6 @@
 language: bash
 services: docker
 
-before_install:
-    - docker rmi $(docker images | grep -F $DOCKER_REPO | awk "{print \$3}")
-
 script:
     - docker build -t $DOCKER_REPO:$TRAVIS_COMMIT .
     - docker run -d -p 1527:1527 -v $(pwd)/dbs:/dbs $DOCKER_REPO:$TRAVIS_COMMIT
