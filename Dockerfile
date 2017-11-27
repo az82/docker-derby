@@ -7,9 +7,9 @@ ENV CLASSPATH=${DERBY_LIB}/derby.jar:${DERBY_LIB}/derbynet.jar:${DERBY_LIB}/derb
 
 RUN \
     apk add --update openssl && \
-    wget https://dist.apache.org/repos/dist/release/db/derby/db-derby-10.13.1.1/db-derby-10.13.1.1-bin.tar.gz && \
-    tar xzf /db-derby-10.13.1.1-bin.tar.gz && \
-    mv /db-derby-10.13.1.1-bin /derby && \
+    wget https://dist.apache.org/repos/dist/release/db/derby/db-derby-10.14.1.0/db-derby-10.14.1.0-bin.tar.gz && \
+    tar xzf /db-derby-10.14.1.0-bin.tar.gz && \
+    mv /db-derby-10.14.1.0-bin /derby && \
     rm -Rf /*.tar.gz ${DERBY_HOME}/demo ${DERBY_HOME}/javadoc ${DERBY_HOME}/docs ${DERBY_HOME}/test ${DERBY_HOME}/*.html ${DERBY_HOME}/KEYS && \
     apk del openssl
 
