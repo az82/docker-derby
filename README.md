@@ -1,11 +1,11 @@
 # Apache Derby Docker Image
-This repository provides a Docker image for Apache Derby using the OpenJDK JRE and Alpine Linux.
+This repository provides a Docker image for Apache Derby using OpenJDK JRE.
 
 You can find the built images at https://hub.docker.com/r/az82/docker-derby/.
 
 ## Software Versions
-* Derby: 10.14.2.0 (http://db.apache.org/derby/index.html)
-* Base Image: Latest OpenJDK 8 JRE image (https://github.com/docker-library/openjdk)
+* Derby: 10.15.1.3 (http://db.apache.org/derby/index.html)
+* Base Image: Latest OpenJDK 11 JRE image with Debian slim (https://github.com/docker-library/openjdk)
 
 ## Image Properties
 * Exposes port _1527_
