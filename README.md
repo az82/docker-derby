@@ -5,7 +5,7 @@ You can find the built images at https://hub.docker.com/r/az82/docker-derby/.
 
 ## Software Versions
 * Derby: 10.15.2.0 (http://db.apache.org/derby/index.html)
-* Base Image: Latest AdoptOpenJDK 11 JRE image with Debian slim (https://github.com/docker-library/openjdk)
+* Base Image: Latest AdoptOpenJDK 11 JRE image with Debian slim (https://github.com/AdoptOpenJDK/openjdk-docker)
 
 ## Image Properties
 * Exposes port _1527_
