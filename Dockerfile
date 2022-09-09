@@ -1,8 +1,8 @@
-FROM adoptopenjdk:11-jre-hotspot
+FROM eclipse-temurin:17-jre
 
-MAINTAINER Andreas Zitzelsberger "az@az82.de"
+LABEL org.opencontainers.image.authors="Andreas Zitzelsberger <az@az82.de>"
 
-ENV DERBY_VERSION=10.15.2.0
+ENV DERBY_VERSION=10.16.1.1
 ENV DERBY_HOME=/derby
 ENV DERBY_LIB=${DERBY_HOME}/lib
 ENV CLASSPATH=${DERBY_LIB}/derby.jar:${DERBY_LIB}/derbynet.jar:${DERBY_LIB}/derbytools.jar:${DERBY_LIB}/derbyoptionaltools.jar:${DERBY_LIB}/derbyclient.jar
@@ -20,6 +20,6 @@ WORKDIR /dbs
 VOLUME ["/dbs"]
 EXPOSE 1527
 
-HEALTHCHECK CMD nc -z localhost 1527 || exit 1
+HEALTHCHECK CMD nc -z localhost 1527 || exit 1
 
 CMD ["java", "-Dderby.stream.error.field=java.lang.System.out", "org.apache.derby.drda.NetworkServerControl", "start", "-h", "0.0.0.0"]
