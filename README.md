@@ -1,5 +1,7 @@
 # Apache Derby Docker Image
 
+> :warning: This image is no longer maintained.
+
 This repository provides Docker images for Apache Derby using OpenJDK JRE.
 
 You can find the built images at https://hub.docker.com/r/az82/docker-derby/.
